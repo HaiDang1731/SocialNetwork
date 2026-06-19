@@ -1,0 +1,42 @@
+spring.application.name=socialnetwork
+
+# Database Configuration
+# Thay YOUR_DB_HOST bằng địa chỉ SQL Server của bạn (vd: localhost)
+spring.datasource.url=jdbc:sqlserver://YOUR_DB_HOST:1433;databaseName=socialnetwork;encrypt=true;trustServerCertificate=true;characterEncoding=UTF-8
+spring.datasource.username=YOUR_DB_USERNAME
+spring.datasource.password=YOUR_DB_PASSWORD
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+
+# Cho phép truy cập file tĩnh trong thư mục uploads
+spring.web.resources.static-locations=classpath:/static/,file:uploads/
+
+# Google OAuth2
+# Lấy tại: https://console.cloud.google.com/apis/credentials
+spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
+spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
+spring.security.oauth2.client.registration.google.scope=openid,profile,email
+spring.security.oauth2.client.registration.google.redirect-uri={baseUrl}/login/oauth2/code/{registrationId}
+
+# Mail Configuration (Gmail)
+# Tạo App Password tại: https://myaccount.google.com/apppasswords
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=YOUR_EMAIL@gmail.com
+spring.mail.password=YOUR_GMAIL_APP_PASSWORD
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+
+# Logging level for Spring Security
+logging.level.org.springframework.security=DEBUG
+
+# Dung lượng tối đa của file upload
+spring.servlet.multipart.max-file-size=100MB
+spring.servlet.multipart.max-request-size=100MB
+
+server.servlet.encoding.charset=UTF-8
+server.servlet.encoding.enabled=true
+server.servlet.encoding.force=true
